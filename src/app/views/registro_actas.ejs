@@ -1,0 +1,84 @@
+<%- include("../includes/head.ejs") %>
+  <%- include('../includes/header.ejs') %>
+
+    <div id="fullpage" class="fullpage-default">
+
+
+
+      <div class="section animated-row" data-section="slide02">
+        <div class="section-inner">
+          <div class="row justify-content-center">
+            <div class="col-md-8 wide-col-laptop">
+              <div class="title-block animate" data-animate="fadeInUp">
+                <span></span>
+                <h2></h2>
+
+              </div>
+
+
+
+              <form class="row g-3" action="registroActas" method="POST">
+
+
+                <div class="row mb-3">
+                  <label for="inputUsuario" class="col-sm-4 col-form-label">Usuario que Registra</label>
+                  <div class="col-sm-10">
+                    <input name= "usuario" type="text" class="form-control" id="inputUsuario">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputUsuario" class="col-sm-4 col-form-label">Código de Acta</label>
+                  <div class="col-sm-10">
+                    <input name= "codigoActa" type="text" class="form-control" id="codigoActa">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputFecha" class="col-sm-3 col-form-label">Fecha de Registro</label>
+                  <div class="col-sm-10">
+                    <input name="fecha" type="date" class="form-control" id="date">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="ejemplo_archivo_1" class="col-sm-4 col-form-label">Adjuntar Archivo</label>
+                  <div class="col-sm-10">
+                    <input name="archivo" type="file" class="form-control" id="ejemplo_archivo_1">
+                  </div>
+
+                  <div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                  </div>
+                </div>
+
+
+
+
+              </form>
+
+            </div>
+
+            <div class="scroll-down next-section animate data-animate=" fadeInUp""><a href="/nuevosAfiliados"><img
+                  src="resources/img/galery/mouse-scroll.png" alt=""><span>Clic para realizar registro de afiliados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include("../includes/footer.ejs") %>
+      <!-- Iniciar alerta -->
+    
+    <% if(typeof alert !="undefined" ) { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle  %>',
+          text: '<%= alertMessage %>',
+          icon: '<%= alertIcon %>',
+          showConfirmButton: '<%= showConfirmButton %>',
+          timer: 2500
+        }).then(() => {
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+    <% } %>

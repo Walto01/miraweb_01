@@ -1,0 +1,66 @@
+<body>
+    
+    <div id="video">
+        <div class="preloader">
+            <div class="preloader-bounce">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <header id="header">
+            <div class="container-fluid">
+                <div class="navbar">
+                    <a href="#" id="logo" title="JAC M12">
+                        MiraWeb
+                        <div>
+                            <img class="responsive" id="logo" src="resources/img/extras/Logo.jpeg" height="75px" width="200px" >
+                        </div>
+                    </a>
+
+
+
+                    <div class="navigation-row">
+                        <nav id="navigation">
+                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                            <div class="nav-box navbar-collapse">
+                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                    <li data-menuanchor="slide01" class="active"><a href="/">Bienvenida</a></li>
+                                    <li data-menuanchor="slide04"><a href="/images">Imágenes</a></li> 
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === true ? rol !== "" ? 'inside': 'login' : 'login' %>">
+                                            <%= login === true ? rol !== "" ? '': 'login' : 'login' %>
+                                        </a>
+                                    </li>
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === true ? rol !== "" ? 'registroActas': '' : '' %>">
+                                            <%= login === true ? rol !== "" ? 'Registro Actas': '' : '' %>
+                                        </a>
+                                    </li>
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === true ? rol !== "" ? 'tablaRegistros': '' : '' %>">
+                                            <%= login === true ? rol !== "" ? 'Registro Afiliados': '' : '' %>
+                                        </a>
+                                    </li>
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === true ? rol == "" ? '': 'registro' : '' %>">
+                                            <%= login === true ? rol == "" ? '': 'Registro Actores' : '' %>
+                                        </a>
+                                    </li>
+                                    <li data-menuanchor="">
+                                        <a href="<%= login === true ? rol !== "" ? 'logout': '' : '' %>">
+                                            <%= login === true ? rol !== "" ? 'Cerrar Sesión': '' : '' %>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <video autoplay muted loop id="myVideo">
+          <source src="resources/img/extras/Network _61000.mp4" type="video/mp4">
+        </video>

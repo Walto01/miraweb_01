@@ -1,0 +1,262 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/header.ejs') %>
+
+<div id="fullpage" class="fullpage-default">
+    <div class="section animated-row" data-section="slide03">
+      <div class="section-inner">
+        <div class="about-section">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 wide-col-laptop">
+              <div class="row">
+                <div class="col-md-6">
+
+                            <!-- ##### Breadcumb Area Start ##### -->
+        <section class="breadcumb-area bg-img bg-overlay" >
+            <div class="bradcumbContent">
+                <!-- <p>See what’s new</p> -->
+                <h2>REGISTRO NUEVOS AFILIADOS</h2>
+            </div>
+        </section>
+        <!-- ##### Breadcumb Area End ##### -->
+            <section class="login-area section-padding-100" id="registro" ></section>
+                <div class="container">
+                    <div class="card">
+                        <form action="tabla_registros.ejs" method="POST" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="row g-3">
+
+                                    <form class="row g-3">
+                                    <!-- 1 -->
+                                    <div class="col-md-6">
+                                        <label for="inputNombre" class="form-label">Nombres:</label>
+                                        <input class="form-control form-control-dark" type="text" name="Nombre" id="inputNombre"
+                                            placeholder="Ingresa Nombre" min="6" max="" autofocus value="" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputApellido" class="form-label">Apellidos:</label>
+                                        <input class="form-control form-control-dark" type="text" name="Apellido"
+                                            id="nombre_producto" placeholder="Ingresa Apellido" min="2" max="25" value=""required>
+                                    </div>
+
+                                    <!-- 2 -->
+                                    <div class="col-md-6">
+                                        <label for="nombre">Edad:</label>
+                                        <input class="form-control form-control-dark" type="text" name="Edad" id="lugar"
+                                            placeholder="Ingresa Edad" min="2" max="25" value="" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nombre" >Fecha de nacimiento:</label>
+                                        <input class="form-control form-control-dark" type="date" name="fechaNacimiento" id="fechaNacimiento"
+                                             value="" required>
+                                    </div>
+
+                                    <!-- 3 -->
+                                    <div class="col-md-6">
+                                        <label for="nombre">Número de Documento:</label>
+                                        <input class="form-control form-control-dark" type="text" name="Documento" id="inputDocumento"
+                                            placeholder="Ingresa Número de Documento" value="" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nombre">Dirección:</label>
+                                        <input class="form-control form-control-dark" type="text" name="Direccion" id="dirección"
+                                            placeholder="Ingresa Dirección" value="" required>
+                                    </div>
+                                    <!-- 5 -->
+                                    <div class="col-md-6">
+                                        <label for="nombre">Teléfono:</label>
+                                        <input class="form-control form-control-dark" type="text" name="telefono" id="inputTeléfono"
+                                            placeholder="Ingresa Teléfono" value="" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nombre">Profesión:</label>
+                                        <input class="form-control form-control-dark" type="text" name="Profesión" id="inputProfesión"
+                                            placeholder="Ingresa Profesión" value="" required>
+                                    </div>
+                                     <!-- 6 -->
+                                     <div class="col-md-12">
+                                        <p><textarea name="comentario" rows="5" cols="100"
+                                            class="form-control form-control-dark ">Escribe aquí tu comentario: </textarea></p>
+                                      </div>
+                
+                                    <!-- 7 -->
+                                    <div class="col-md-6">
+                                        <label for="rol">Comité</label>
+                                        <select name="rol" id="rol" class="form-control form-control-dark">
+                                          <option value=""></option>
+                                          <option value="medioAmbiente">Medio ambiente</option>
+                                          <option value="recreoDeporte">Recreodeporte</option>
+                                          <option value="educación">Educación</option>
+                                          <option value="infraestructura">Infraestructura</option>
+                                          <option value="salud">Salud</option>
+                                          <option value="cultura">Cultura</option>
+                                        </select>
+                                      </div>
+
+                                    <div class="col-md-12">
+                                        <label for="nombre">Firma</label>
+                                        <p><input type="file" name="Firma" id="imagen"></p>
+                                    </div>
+
+                                </div>
+
+                                <div class="row d-flex justify-content-center mt-3">
+                                    <input type="submit" class="btn btn-dark project-buttons-margin" value="Registrar">
+                                </div>
+
+                            </div>
+
+                        </form>
+                            <!-- <div style="height: 15px;"></div> -->
+                        
+                        </form>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <div class="card-footer">
+                                            <table id="verTableUsuario" class="table table-striped table-hover table-bordered" style="width:200%">
+                                                <thead class="text-center text-dark">
+                                                    <tr>
+                                                        <td>#</td>
+                                                        <td>Nombres</td>
+                                                        <td>Apellidos</td>
+                                                        <td>Edad</td>
+                                                        <td>Fecha de nacimiento</td>
+                                                        <td>Número de Documento</td>
+                                                        <td>Dirección</td>
+                                                        <td>Teléfono</td>
+                                                        <td>Profesión</td>
+                                                        <td>comentario</td>
+                                                        <td>Comité</td>
+                                                        <td>Firma</td>
+                                                        <td>Opción</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for (var index=0; index < datos.length; index++) { %>
+                                                        <tr>
+                                                            <td style="text-align: center;"><%= datos[index].id_afiliados%></td>
+                                                            <td style="text-align: center;"><%= datos[index].fecha_nacimiento%></td>
+                                                            <td style="text-align: center;"><%= datos[index].nombre%></td>
+                                                            <td style="text-align: center;"><%= datos[index].apellido%></td>
+                                                            <td style="text-align: center;"><%= datos[index].edad%></td>
+                                                            <td style="text-align: center;"><%= datos[index].documento%></td>
+                                                            <td style="text-align: center;"><%= datos[index].direccion%></td>
+                                                            <td style="text-align: center;"><%= datos[index].telefono%></td>
+                                                            <td style="text-align: center;"><%= datos[index].profesion%></td>
+                                                            <td style="text-align: center;"><%= datos[index].observaciones%></td>
+                                                            <td style="text-align: center;"><%= datos[index].nombre_comite%></td>
+                                                            <td style="text-align: center;"><%= datos[index].firma_digitalizada%></td>
+                                                            <td style="text-align: center;"><%= datos[index].registra%></td>
+                                                            <td>
+                                                                <div class="col">
+                                                                    <button type="button" class="mr-1 btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%= datos[index].id_sorteos %>" data-bs-whatever="@mdo"><i class="fas fa-marker"></i></button>
+                                                                        <div style="height: 5px;"></div>
+                                                                    <a class="mr-1 btn btn-danger"  href="/deleteTabla/<%= datos[index].id_afiliados%>"> <i class="fas fa-trash-alt"></i></a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <div class="modal fade" id="exampleModal<%= datos[index].id_afiliados%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Actualización</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <form method="POST" action="/updateTabla/<%= datos[index].id_sorteos%>" enctype="multipart/form-data">
+
+                                                                    <div class="mb-3">
+                                                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
+                                                                    <input type="text" name="nombre" class="form-control" id="recipient-name" value="<%= datos[index].titulo%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Apellidos:</label>
+                                                                        <input type="text" name="Apellido" class="form-control" id="recipient-name"  value="<%= datos[index].nombre_producto%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Edad:</label>
+                                                                        <input type="text" name="Edad" class="form-control" id="recipient-name"  value="<%= datos[index].lugar%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Fecha de nacimiento:</label>
+                                                                        <input type="date" name="fechaNacimiento" class="form-control" id="recipient-name" value="<%= datos[index].fecha%>" required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Número de Documento:</label>
+                                                                        <input type="time" name="Documento" class="form-control" id="recipient-name" value="<%= datos[index].hora%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Dirección:</label>
+                                                                        <input type="text" name="Dirección" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Teléfono:</label>
+                                                                        <input type="text" name="telefono" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Profesión:</label>
+                                                                        <input type="text" name="Profesión" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Escribe aquí tu comentario:</label>
+                                                                        <input type="text" name="comentario" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Comité:</label>
+                                                                        <input type="text" name="rol" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Firma:</label>
+                                                                        <input type="text" name="Firma" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                                                        <input type="submit" class="btn btn-secondary" value="Actualizar">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+    <div style="height: 100 "></div>
+                    
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+     <%- include("../includes/footer.ejs") %> 
+    <!-- Iniciar alerta -->
+  
+  <% if(typeof alert !="undefined" ) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle  %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: '<%= showConfirmButton %>',
+        timer: 2500
+      }).then(() => {
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %>

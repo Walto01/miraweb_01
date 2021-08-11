@@ -1,0 +1,65 @@
+<%- include("../includes/head.ejs") %>
+  <%- include('../includes/header.ejs') %>
+
+    <div id="fullpage" class="fullpage-default">
+
+
+
+      <div class="section animated-row" data-section="slide02">
+        <div class="section-inner">
+          <div class="row justify-content-center">
+            <div class="col-md-8 wide-col-laptop">
+              <div class="title-block animate" data-animate="fadeInUp">
+                <span></span>
+                <h2></h2>
+
+              </div>
+              <p></p>
+
+              <form action="login" method="POST">
+                <div class="row mb-3">
+                  <label for="inputUsuario" class="col-sm-2 col-form-label">Usuario</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputUsuario" name="usuario">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" name="passw"> 
+                  </div>
+                </div>
+
+                <div>
+                  <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+
+                <div class="col-12">
+                  <a href="/" class="btn-cancel">Cancelar</a>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>
+
+<%- include("../includes/footer.ejs") %>
+  <!-- Iniciar alerta -->
+
+<% if(typeof alert !="undefined" ) { %>
+  <script>
+    Swal.fire({
+      title: '<%= alertTitle  %>',
+      text: '<%= alertMessage %>',
+      icon: '<%= alertIcon %>',
+      showConfirmButton: '<%= showConfirmButton %>',
+      timer: 2500
+    }).then(() => {
+      window.location = '/<%= ruta %>'
+    })
+  </script>
+<% } %>
