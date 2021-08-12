@@ -75,7 +75,7 @@ const postLogin = async (req, res) => {
   );
 };
 
-//   Registro
+//   Registro Actores
 const getRegistro = (req, res) => {
   if (req.session.loggedin) {
     res.render("registro.ejs", {
@@ -222,8 +222,6 @@ const postRegistroActas = async (req, res) => {
 };
 
 
-
-
 //   Registro nuevo afiliados
 const getRegistro_nue_afi = (req, res) => {
   if (req.session.loggedin) {
@@ -234,7 +232,7 @@ const getRegistro_nue_afi = (req, res) => {
       login: true,
     });
   } else {
-    res.render("index.ejs", {
+    res.render("registro_nue_afi.ejs", {
       usuario: req.session.usuario,
       rol: req.session.rol,
       login: false,
@@ -242,87 +240,40 @@ const getRegistro_nue_afi = (req, res) => {
   }
 };
 
-//   Tabla nuevos afiliados
-/*const  = (req, res) => {
-  if (req.session.loggedin) {
-    res.render("tabla_registros.ejs", {
-      // Enviar parametros
-      usuario: req.session.usuario,
-      rol: req.session.rol,
-      login: true,
-    });
-  } else {
-    res.render("inside.ejs", {
-      usuario: req.session.usuario,
-      rol: req.session.rol,
-      login: false,
-    });
-  }
-};
 
-/* Tabla registros */
-
-const gettabla_registros = (req, res) => {
+const postRegistro_nue_afi = async (req, res) => {
   
-    connection.query("SELECT * FROM afiliados", (error, results) => {
-      if (error) {
-        console.log("Que error tengo: " + error);
-      } else {
-        if (req.session.loggedin) {
-          res.render("tabla_registros.ejs", {
-            // Enviar parametros
-            username: req.session.username,
-            rol: req.session.rol,
-            login: true,
-            datos: results,
-          });
-        } else {
-          res.render("inside.ejs", {
-            username: req.session.username,
-            rol: req.session.rol,
-            login: false,
-          });
-        }
-      }
-    });
-
-}
-
-const posttabla_registros = async (req, res) => {
-
-
-  const {titulo, nombre_producto, lugar, fecha, hora, telefono,} = req.body;
+  const {Nombre, Apellido, Edad, Documento, Direccion, Telefono, Profesion, Comentario, Comite, Firma, Registra} = req.body;
         
-  console.log("Ruta de imagen:"+ rutaImagen);
-  console.log(req.body);
-  console.log("Mostrar File: "+req.file);
-  connection.query("INSERT INTO db_sorteos SET ?",
+  connection.query("INSERT INTO afiliados SET ?",
     {
-      titulo: titulo,
-      codigo: "Cod-" + uuidv8(),
-      nombre_producto: nombre_producto,
-      lugar: lugar,
-      fecha: fecha,
-      hora: hora,
-      telefono: telefono,
-      imagen: rutaImagen,
+      nombre: Nombre,
+      apellido: Apellido,
+      edad: Edad,
+      documento: Documento,
+      direccion: Direccion,
+      telefono: Telefono,
+      profesion: Profesion,
+      observaciones: Comentario,
+      nombre_comite: Comite,
+      firma_digitalizada: Firma,
+      registra: Registra,
     },async (error, results) => {
       if (error) {
-        console.log("Que error tengo: " + error);
+        console.log("Error: " + error);
       } else {
-        res.render("sorteos_admin.ejs", {
+        res.render("pruebaVista.ejs", {
           datos: results,
-          foto_perfil: req.session.foto_perfil,
           username: req.session.username,
           login: true,
           rol: req.session.rol,
           alert: true,
           alertTitle: "Enviado",
-          alertMessage: "¡Actualziación exitosa!",
+          alertMessage: "¡Registro exitoso!",
           alertIcon: "success",
           showConfirmButton: false,
-          timer: false,
-          ruta: "tablaRegistros",
+          timer: 1500,
+          ruta: "pruebaVista",
         });
       }
     }
@@ -330,15 +281,38 @@ const posttabla_registros = async (req, res) => {
 
 }
 
-const getDeletetabla = (req,res) => {
+//   Tabla registros 
 
+const getPruebaTabla = (req, res) => {
+  connection.query("SELECT * FROM afiliados", (error, result) => {
+    if (error) {
+      console.log("Error : " + error)
+    } else {
+      if (req.session.loggedin){
+        res.render('prueba_tabla.ejs',{
+          datos: result,
+          login: true,
+        });
+      } else (
+        res.render('prueba_tabla.ejs', {
+          login: false, 
+        })
+      )
+    }
+  })
+};
+
+
+const getDeletetabla = (req,res) => {
+  
     const id= req.params.id;
-    const queryDelete= ("DELETE FROM db_sorteos WHERE id_sorteos = ?");
-    connection.query(queryDelete, [id], (err,result) => {
+    console.log(id);
+    const queryDeleteAfiliados= ("DELETE FROM afiliados WHERE id_afiliados = ?");
+    connection.query(queryDeleteAfiliados, [id], (err,result) => {
       if(err){
         res.send(err);
       }else{
-         res.redirect("/tabla_registros.ejs");
+         res.redirect("pruebaVista");
       }
     });
 
@@ -346,19 +320,60 @@ const getDeletetabla = (req,res) => {
 
 const postActualizartabla = (req,res) => {
   const id= req.params.id;
-  const rutaImagen = req.file.filename;
-  const{titulo, nombre_producto, lugar, fecha, hora, telefono} = req.body;
+  console.log(id);
+  const{Nombre, Apellido, Edad, Documento, Direccion, Telefono, Profesion, Comentario, Comite, Firma, Registra} = req.body;
   console.log(req.body);
-  const queryUpdateSorteo=("UPDATE db_sorteos SET titulo = ?, nombre_producto = ?, lugar = ?, fecha = ?, hora = ?, telefono = ?, imagen = ? WHERE id_sorteos = ?");
-  connection.query( queryUpdateSorteo, [titulo, nombre_producto, lugar, fecha, hora, telefono, rutaImagen, id], (err, results) =>  {
+  const queryUpdateAfiliados=("UPDATE afiliados SET nombre = ?, apellido = ?, fecha_nacimiento = ?, edad = ?, documento = ?, direccion = ?, direccion = ?, telefono = ?, profesion= ?, observaciones = ?, nombre_comite = ?, firma_digitalizada = ?, registra = ? WHERE id_afiliados = ?");
+  connection.query( queryUpdateAfiliados, [Nombre, Apellido, Edad, Documento, Direccion, Telefono, Profesion, Comentario, Comite, Firma, Registra, id], (err, results) =>  {
     if(err){
       res.send(err);
     }else{
-      res.redirect("/tabla_registros");
+      res.redirect("/pruebaVista.ejs");
     }
   });
 
 };
+
+//prueba vista
+
+const getPruebavista = (req, res) => {
+  connection.query("SELECT * FROM afiliados", (error, result) => {
+    if (error) {
+      console.log("Error : " + error)
+    } else {
+      if (req.session.loggedin){
+        res.render('pruebaVista.ejs',{
+          datos: result,
+          login: true,
+          rol: req.session.rol,
+          //rol: "",
+        });
+      } else (
+        res.render('inside.ejs', {
+          login: false, 
+        })
+      )
+    }
+  })
+};
+
+/*const getPruebavista = (req, res) => {
+  if (req.session.loggedin) {
+    res.render("pruebaVista.ejs", {
+      // Enviar parametros
+      usuario: req.session.usuario,
+      rol: req.session.rol,
+      datos: res,
+      login: true,
+    });
+  } else {
+    res.render("index.ejs", {
+      usuario: req.session.usuario,
+      rol: req.session.rol,
+      login: false,
+    });
+  }
+};*/
 
 
 /* Cierre sesión */
@@ -390,12 +405,14 @@ module.exports = {
   postRegistroActas,
 
   getRegistro_nue_afi,
+  postRegistro_nue_afi,
 
-  gettabla_registros,
-  posttabla_registros,
+  getPruebaTabla, 
 
   getDeletetabla,
   postActualizartabla,
+
+  getPruebavista,
 
   getLogout,
 };

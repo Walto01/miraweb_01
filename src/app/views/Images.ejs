@@ -1,91 +1,65 @@
 <%- include("../includes/head.ejs") %>
     <%- include('../includes/header.ejs') %>
 
-        <div id="fullpage" class="fullpage-default">
+        
+    <div id="fullpage" class="fullpage-default">
 
 
-
-
-
-
-
-            <div class="section animated-row" data-section="slide05">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Nadie puede más que todos juntos.</span>
-                                <h2></h2>
-                            </div>
-                            <div class="gallery-section">
-                                <div class="gallery-list owl-carousel">
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="resources/img/galery/Actividad.jpeg" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Ellos son el futuro.</h4>
-                                                <p></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="resources/img/galery/IMG_1.jpg" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>¡La edad no es una barrera!</h4>
-                                                <p></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="resources/img/galery/Comunidad.jpeg" alt="">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>¡Juntos Somo más! </h4>
-                                                <p></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <h2></h2>
-                                <div class="title-block animate" data-animate="fadeInUp">
-                                    <h6>Imágenes propiedad de MiraWeb</h6>
-                                    <h2></h2>
-                                </div>
-                            </div>
+        <div class="section animated-row" data-section="slide05">
+            <div class="section-inner">
+                <div class="row justify-content-center align-items-center vh-100">
+                    <div class="col-md-8 wide-col-laptop ">
+                        <div class="title-block animate" data-animate="fadeInUp">
+                            <span>¿Quiénes somos?</span>
+                            <h2></h2>
+                        
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section animated-row" data-section="slide06">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>¿Quienes somos?</span>
-                                <h2></h2>
-
-                                <div class="card-deck">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="resources/img/galery/IMG_2.jpg" class="card-img-top"
-                                            alt="resources/img/galery/IMG_2.jpg">
-                                        <div class="card-body">
-                                            <p class="card-text">Some quick example text to build on the card title and
-                                                make up the bulk of the card's content.</p>
+                            
+                        <body class="m-o vh-100 row justify-content-center " ></body>
+                        
+                            <div class="title-block animate">
+                                <div class="gallery-list owl-carousel">
+                                 <div class="item animate" data-animate="fadeInUp">
+                                    <div class="portfolio-item">
+                                        <div class="thumb">
+                                            <img src="resources/img/galery/Sara.jpeg" alt="">
+                                        </div>
+                                        <div class="thumb-inner animate" data-animate="">
+                                            <h4>Sara Rodriguez</h4>
+                                            <p></p>
                                         </div>
                                     </div>
-
                                 </div>
 
+                                <div class="item animate" data-animate="fadeInUp">
+                                    <div class="portfolio-item">
+                                        <div class="thumb">
+                                            <img src="resources/img/galery/walto.jpeg" alt="">
+                                        </div>
+                                        <div class="thumb-inner animate" data-animate="fadeInUp">
+                                            <h4>Walther Chavarro</h4>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        
+                        </body>
 
+                        
+
+
+
+                       
+                            <h2></h2>
+                            <div class="title-block animate" data-animate="fadeInUp">
+                                <h10>La aplicación MIRAWEB hace parte de un ejercicio académico en el programa Técnico en Programación de Software, en convenio Institución Universitaria Salazar y Herrera - SENA, 2021.
+                                    <p>
+                                    Autores:  Sara Rodriguez - Walther Chavarro
+                                    <p>
+                                    Los derechos de uso y ejecución están sujetos a Licencia Creative Commons, o derechos reservados de autor según sea el caso consulte "co.creativecommons.org"</h6>
+                                <h2></h2>
                             </div>
                         </div>
                     </div>
@@ -93,20 +67,6 @@
             </div>
         </div>
 
+    </div>
 
-        <%- include("../includes/footer.ejs") %>
-        <!-- Iniciar alerta -->
-      
-      <% if(typeof alert !="undefined" ) { %>
-        <script>
-          Swal.fire({
-            title: '<%= alertTitle  %>',
-            text: '<%= alertMessage %>',
-            icon: '<%= alertIcon %>',
-            showConfirmButton: '<%= showConfirmButton %>',
-            timer: 2500
-          }).then(() => {
-            window.location = '/<%= ruta %>'
-          })
-        </script>
-      <% } %>
+    <%- include("../includes/footer.ejs") %>

@@ -1,0 +1,166 @@
+<%- include("../includes/head.ejs") %>
+    <%- include('../includes/header.ejs') %>
+
+    <div id="fullpage" class="fullpage-default">
+
+
+
+        <div class="section animated-row" data-section="slide02">
+          <div class="section-inner">
+            <div class="row justify-content-center">
+              <div class="col-md-8 wide-col-laptop">
+                <div class="title-block animate" data-animate="fadeInUp">
+                  <span></span>
+                  <h2></h2>
+  
+                </div>
+                <p></p>
+
+                            </form>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-auto">
+                                    <div class="table-responsive">
+                                        <div class="card-footer">
+                                            <table id="verTableUsuario" class="table table-striped table-hover table-bordered" style="width:100%">
+                                                <thead class="text-center text-dark">
+                                                    <tr>
+                                                        <td>#</td>
+                                                        <td>Nombres</td>
+                                                        <td>Apellidos</td>
+                                                        <td>Edad</td>
+                                                        <td>Número de Documento</td>
+                                                        <td>Dirección</td>
+                                                        <td>Teléfono</td>
+                                                        <td>Profesión</td>
+                                                        <td>Comentario</td>
+                                                        <td>Comité</td>
+                                                        <td>Firma</td>
+                                                        <td>Registra</td>
+                                                        <td>Opción</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for (var index=0; index < datos.length; index++) { %>
+                                                        <tr>
+                                                            <td style="text-align: center;"><%= datos[index].id_afiliados%></td>
+                                                            <td style="text-align: center;"><%= datos[index].nombre%></td>
+                                                            <td style="text-align: center;"><%= datos[index].apellido%></td>
+                                                            <td style="text-align: center;"><%= datos[index].edad%></td>
+                                                            <td style="text-align: center;"><%= datos[index].documento%></td>
+                                                            <td style="text-align: center;"><%= datos[index].direccion%></td>
+                                                            <td style="text-align: center;"><%= datos[index].telefono%></td>
+                                                            <td style="text-align: center;"><%= datos[index].profesion%></td>
+                                                            <td style="text-align: center;"><%= datos[index].observaciones%></td>
+                                                            <td style="text-align: center;"><%= datos[index].nombre_comite%></td>
+                                                            <td style="text-align: center;"><%= datos[index].firma_digitalizada%></td>
+                                                            <td style="text-align: center;"><%= datos[index].registra%></td>
+                                                            <td>
+                                                                <div class="col">
+                                                                    <button type="button" class="mr-1 btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%= datos[index].id_afiliados %>" data-bs-whatever="@mdo"><i class="fas fa-marker"></i></button>
+                                                                        <div style="height: 5px;"></div>
+                                                                    <a class="mr-1 btn btn-danger bg-danger"  href="/deleteTabla/<%= datos[index].id_afiliados%>"> <i class="fas fa-trash-alt"></i></a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <div class="modal fade" id="exampleModal<%= datos[index].id_afiliados%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Actualización</h5>
+                                                                <button type="button" class="btn-close bg-success" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <form method="POST" action="/updateTabla/<%= datos[index].id_afiliados%>" enctype="multipart/form-data">
+
+
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">#:</label>
+                                                                        <input type="text" name="nombre" class="form-control" id="recipient-name" value="<%= datos[index].id_afiliados%>">
+                                                                        </div>
+                                                                    <div class="mb-3">
+                                                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
+                                                                    <input type="text" name="nombre" class="form-control" id="recipient-name" value="<%= datos[index].nombre%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Apellidos:</label>
+                                                                        <input type="text" name="Apellido" class="form-control" id="recipient-name"  value="<%= datos[index].apellido%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Edad:</label>
+                                                                        <input type="text" name="Edad" class="form-control" id="recipient-name"  value="<%= datos[index].edad%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Número de Documento:</label>
+                                                                        <input type="time" name="Documento" class="form-control" id="recipient-name" value="<%= datos[index].documento%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Dirección:</label>
+                                                                        <input type="text" name="Dirección" class="form-control" id="recipient-name" value="<%= datos[index].direccion%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Teléfono:</label>
+                                                                        <input type="text" name="telefono" class="form-control" id="recipient-name" value="<%= datos[index].telefono%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Profesión:</label>
+                                                                        <input type="text" name="Profesión" class="form-control" id="recipient-name" value="<%= datos[index].profesion%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Escribe aquí tu comentario:</label>
+                                                                        <input type="text" name="comentario" class="form-control" id="recipient-name" value="<%= datos[index].observaciones%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Comité:</label>
+                                                                        <input type="text" name="rol" class="form-control" id="recipient-name" value="<%= datos[index].comite%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Firma:</label>
+                                                                        <input type="text" name="Firma" class="form-control" id="recipient-name" value="<%= datos[index].firma%>">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="recipient-name" class="col-form-label">Registra:</label>
+                                                                        <input type="text" name="Firma" class="form-control" id="recipient-name" value="<%= datos[index].registra%>">
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary btn-dark " data-bs-dismiss="modal">Cerrar</button>
+                                                                        <input type="submit" class="btn btn-secondary" value="Actualizar">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+  
+
+  
+                    </div>
+               </div>
+            <div>
+        </div>
+    </div>
+  
+
+    <%- include("../includes/footer.ejs") %>
+
+    <% if(typeof alert !="undefined" ) { %>
+        <script>
+          Swal.fire({
+            title: '<%= alertTitle  %>',
+            text: '<%= alertMessage %>',
+            icon: '<%= alertIcon %>',
+            showConfirmButton: '<%= showConfirmButton %>',
+            timer: 2500
+          }).then(() => {
+            window.location = '/<%= ruta %>'
+          })
+        </script>
+      <% } %>
