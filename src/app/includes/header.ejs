@@ -26,10 +26,10 @@
                             <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
                             <div class="nav-box navbar-collapse">
                                 <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="slide01" class="active"><a href="/">Bienvenida</a></li>
-                                    <li data-menuanchor="slide04"><a href="/images">Imágenes</a></li> 
+                                    <li data-menuanchor="slide01" ><a href="/" >Bienvenida</a></li>
+                                    <li data-menuanchor="slide04"><a href="/images">Acerca de nosotros</a></li> 
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol !== "" ? 'inside': 'login' : 'login' %>">
+                                        <a href="<%= login === true ? rol !== "" ? 'login': 'login' : 'login' %>">
                                             <%= login === true ? rol !== "" ? '': 'login' : 'login' %>
                                         </a>
                                     </li>
@@ -39,8 +39,13 @@
                                         </a>
                                     </li>
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol !== "" ? 'pruebaTabla': '' : '' %>">
+                                        <a href="<%= login === true ? rol !== "" ? 'nuevosAfiliados': '' : '' %>">
                                             <%= login === true ? rol !== "" ? 'Registro Afiliados': '' : '' %>
+                                        </a>
+                                    </li>
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === true ? rol !== "" ? 'pruebaVista': '' : '' %>">
+                                            <%= login === true ? rol !== "" ? 'Tabla de registros': '' : '' %>
                                         </a>
                                     </li>
                                     <li data-menuanchor="slide02">
