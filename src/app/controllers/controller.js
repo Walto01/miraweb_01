@@ -312,7 +312,7 @@ const getDeletetabla = (req,res) => {
       if(err){
         res.send(err);
       }else{
-         res.redirect("pruebaVista");
+         res.redirect("/pruebaVista");
       }
     });
 

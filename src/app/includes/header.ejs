@@ -26,31 +26,40 @@
                             <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
                             <div class="nav-box navbar-collapse">
                                 <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="slide01" ><a href="/" >Bienvenida</a></li>
-                                    <li data-menuanchor="slide04"><a href="/images">Acerca de nosotros</a></li> 
+
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol !== "" ? 'login': 'login' : 'login' %>">
-                                            <%= login === true ? rol !== "" ? '': 'login' : 'login' %>
+                                        <a href="<%= login === false ? '/': ''%>">
+                                            <%= login === false ? 'Bienvenida': ''%>
                                         </a>
                                     </li>
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol !== "" ? 'registroActas': '' : '' %>">
-                                            <%= login === true ? rol !== "" ? 'Registro Actas': '' : '' %>
+                                        <a href="<%= login === false ? '/images': ''%>">
+                                            <%= login === false ? 'Acerca de nosotros': ''%>
+                                        </a>
+                                    </li> 
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === false ? 'login': ''%>">
+                                            <%= login === false ? 'login': ''%>
                                         </a>
                                     </li>
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol !== "" ? 'nuevosAfiliados': '' : '' %>">
-                                            <%= login === true ? rol !== "" ? 'Registro Afiliados': '' : '' %>
+                                        <a href="<%= login === true ? 'registroActas': '' %>">
+                                            <%= login === true ? 'Registro Actas': '' %>
                                         </a>
                                     </li>
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol !== "" ? 'pruebaVista': '' : '' %>">
-                                            <%= login === true ? rol !== "" ? 'Tabla de registros': '' : '' %>
+                                        <a href="<%= login === true ? 'nuevosAfiliados': '' %>">
+                                            <%= login === true ? 'Registro Afiliados': '' %>
                                         </a>
                                     </li>
                                     <li data-menuanchor="slide02">
-                                        <a href="<%= login === true ? rol == "" ? '': 'registro' : '' %>">
-                                            <%= login === true ? rol == "" ? '': 'Registro Actores' : '' %>
+                                        <a href="<%= login === true ?  'pruebaVista': '' %>">
+                                            <%= login === true ? 'Tabla de registros': '' %>
+                                        </a>
+                                    </li>
+                                    <li data-menuanchor="slide02">
+                                        <a href="<%= login === true ? 'registro': '' %>">
+                                            <%= login === true ? 'Registro Actores': '' %>
                                         </a>
                                     </li>
                                     <li data-menuanchor="">
