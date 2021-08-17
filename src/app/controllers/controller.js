@@ -120,7 +120,7 @@ const postRegistro = async (req, res) => {
                     alertIcon: "info",
                     showConfirmButton: false,
                     timer: 3500,
-                    ruta: "login",
+                    ruta: "registro",
                   });
             }
         });
@@ -196,29 +196,46 @@ const getRegistroActas = (req, res) => {
 
 
 const postRegistroActas = async (req, res) => {
- const { usuario, codigoActa, fecha, archivo, } = req.body;
- console.log(req.body);
- connection.query("INSERT INTO actas SET ?", {
-   usuario_registra: usuario,
-   codigo_acta: codigoActa,
-   fecha_creacion: fecha,
-   registra: archivo
- }, async(error,results) =>{
-   if (error){
-     console.log(error);
-   } else {
-    res.render("registro_actas.ejs", {
-      login: false,
-      alert: true,
-      alertTitle: "Exitoso!",
-      alertMessage: "Acta registrada ",
-      alertIcon: "info",
-      showConfirmButton: false,
-      timer: 3500,
-      ruta: "registroActas",
-    });
-   }
- })
+  const { usuario, codigoActa, fecha, archivo} = req.body;
+  console.log(req.body);
+
+  connection.query("SELECT * FROM actas WHERE codigo_acta = ?", [codigoActa],(err, results) =>{
+    if (results.length === 0){
+        connection.query("INSERT INTO actas SET ?",{
+            usuario_registra: usuario, 
+            codigo_acta: codigoActa, 
+            fecha_creacion: fecha, 
+            registra: archivo, 
+        },
+        async (err, result) =>{
+            if(err){
+                console.log("Muestre Error: "+ err);
+            }else{
+                res.render("registro_actas.ejs", {
+                    login: false,
+                    alert: true,
+                    alertTitle: "Exitoso!",
+                    alertMessage: "Acta registrada ",
+                    alertIcon: "info",
+                    showConfirmButton: false,
+                    timer: 3500,
+                    ruta: "registroActas",
+                  });
+            }
+        });
+    }else{
+        res.render("registro_actas.ejs", {
+            login: false,
+            alert: true,
+            alertTitle: "¡Cuidado!",
+            alertMessage: "Código de acta ya se encuentra en uso",
+            alertIcon: "info",
+            showConfirmButton: false,
+            timer: 3500,
+            ruta: "registroActas",
+          });
+    }
+  })
 };
 
 

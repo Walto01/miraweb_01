@@ -15,35 +15,35 @@
                     <form class="row g-3" action="nuevosAfiliados" method="POST">
                       <div class="col-md-6">
                         <label for="inputNombre" class="form-label">Nombre</label>
-                        <input type="text" name="Nombre"  class="form-control" id="inputNombre">
+                        <input type="text" name="Nombre" required class="form-control" id="inputNombre">
                       </div>
                       <div class="col-md-6">
                         <label for="inputApellido" class="form-label">Apellido</label>
-                        <input type="text" name="Apellido"  class="form-control" id="inputApellido">
+                        <input type="text" name="Apellido" required class="form-control" id="inputApellido">
                       </div>
                       <div class="col-md-6">
                         <label for="inputEdad" class="form-label">Edad</label>
-                        <input type="text" name="Edad" class="form-control" id="inputEdad">
+                        <input type="text" name="Edad" required class="form-control" id="inputEdad">
                       </div>
                       <div class="col-md-6">
                         <label for="inputDocumento" class="form-label">Número de Documento</label>
-                        <input type="text" name="Documento" class="form-control" id="inputDocumento">
+                        <input type="text" name="Documento" required class="form-control" id="inputDocumento">
                       </div>
                       <div class="col-md-6">
                         <label for="inputTeléfono" class="form-label">Teléfono</label>
-                        <input type="tel" name="Telefono" class="form-control" id="inputTeléfono">
+                        <input type="tel" name="Telefono" required class="form-control" id="inputTeléfono">
                       </div>
                       <div class="col-md-6">
                         <label for="inputDirección" class="form-label">Dirección</label>
-                        <input type="text" name="Direccion" class="form-control" id="inputDirección">
+                        <input type="text" name="Direccion" required class="form-control" id="inputDirección">
                       </div>
                       <div class="col-md-6">
                         <label for="inputProfesión" class="form-label">Profesión</label>
-                        <input type="text" name="Profesion" class="form-control" id="inputProfesión">
+                        <input type="text" name="Profesion" required class="form-control" id="inputProfesión">
                       </div>
                       <div class="col-md-6">
                         <label for="rol">Comité</label>
-                        <select name="Comite" id="rol" class="form-control">
+                        <select name="Comite" required id="rol" class="form-control">
                           <option style="color: black ;" value=""></option>
                           <option style="color: black ;" value="medioAmbiente">Medio ambiente</option>
                           <option style="color: black ;" value="recreoDeporte">Recreodeporte</option>
@@ -68,7 +68,7 @@
                       <div class="col-12">
                         <label for="rol" class="form-label">Rol de quien registra</label>
                         <p></p>
-                        <select name="Registra" id="rol" class="form-control">
+                        <select name="Registra" required id="rol" class="form-control">
                           <option style="color: black ;" value="vacio"></option>
                           <option style="color: black ;" value="admin">Admin</option>
                           <option style="color: black ;" value="Presidenta">Presidenta</option>
