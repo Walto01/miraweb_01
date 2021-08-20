@@ -13,6 +13,29 @@ const connection = mysql.createConnection({
     password: "9869a2c0"
 });
 
+function handleDisconnet(conexion_bd){
+    connection= mysql.createPool(conexion_bd);
+
+    connection.getConnetion(function(err){
+        if(err){
+            console.log("error when connecting to db: ", err);
+            setTimeout(handleDisconnet, 2000);
+        }
+    });
+
+    connection.on("error", function(err){
+        console.log("db error", err);
+        if(err.code === "PROTOCOL_CONNECTION_LOST"){
+            handleDisconnet();
+        } else{
+            throw err;
+        }
+    })
+
+}
+
+handleDisconnet(conexion_bd);
+
 connection.connect((err) => {
     if(err) {
         console.log("El error de conexión a DB es: " + err)
