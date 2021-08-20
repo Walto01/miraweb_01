@@ -11,6 +11,7 @@ const conexion_bd = {
     user: process.env.DB_USER,
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASS 
+    
 };
 
 function handleDisconnet(conexion_bd){
