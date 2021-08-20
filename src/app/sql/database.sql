@@ -36,3 +36,7 @@ CREATE TABLE actas(
     registra VARCHAR(50) NOT NULL,
     fecha_creacion DATE NOT NULL
 );
+
+INSERT INTO actores (usuario, nombre, apellido, passw, rol) 
+VALUES ("w.admin", "wadmin", "ch.admin", "
+$2a$12$W.9EIeUjDLCiWhctyuX1SuZhpuDOXDVFTOiaSjE8CIG1YJdI8FaU6", "Admin");
